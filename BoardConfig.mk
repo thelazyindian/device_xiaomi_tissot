@@ -18,6 +18,8 @@ LOCAL_PATH := device/xiaomi/tissot
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+TARGET_USE_CM_RAMDISK := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a

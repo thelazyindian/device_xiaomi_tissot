@@ -58,4 +58,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Citrus-CAF Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-         DEVICE_MAINTAINERS="Satyabrat (thelazyindian)"
+    DEVICE_MAINTAINERS="Satyabrat (thelazyindian)"
+
+# CAF REVISION
+  PRODUCT_PROPERTY_OVERRIDES += \
+    ro.caf.branch=LA.UM.5.6.r1-05300-89xx.0

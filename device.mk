@@ -131,6 +131,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libbthost_if
 
+# Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
+
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
     bootctrl.msm8953

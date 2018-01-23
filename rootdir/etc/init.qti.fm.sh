@@ -1,5 +1,5 @@
-#!/system/bin/sh
-# Copyright (c) 2009-2011, 2015, The Linux Foundation. All rights reserved.
+#!/vendor/bin/sh
+# Copyright (c) 2009-2011, 2015, 2017 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -31,17 +31,17 @@ setprop hw.fm.init 0
 mode=`getprop hw.fm.mode`
 version=199217
 
-LOG_TAG="qcom-fm"
+LOG_TAG="qti-fm"
 LOG_NAME="${0}:"
 
 loge ()
 {
-  /system/bin/log -t $LOG_TAG -p e "$LOG_NAME $@"
+  /vendor/bin/log -t $LOG_TAG -p e "$LOG_NAME $@"
 }
 
 logi ()
 {
-  /system/bin/log -t $LOG_TAG -p i "$LOG_NAME $@"
+  /vendor/bin/log -t $LOG_TAG -p i "$LOG_NAME $@"
 }
 
 failed ()
@@ -60,17 +60,17 @@ case $mode in
   "normal")
         logi "inserting the radio transport module"
         echo 1 > /sys/module/radio_iris_transport/parameters/fmsmd_set
-        /system/bin/fm_qsoc_patches $version 0
+        /vendor/bin/fm_qsoc_patches $version 0
      ;;
   "wa_enable")
-   /system/bin/fm_qsoc_patches $version 1
+   /vendor/bin/fm_qsoc_patches $version 1
      ;;
   "wa_disable")
-   /system/bin/fm_qsoc_patches $version 2
+   /vendor/bin/fm_qsoc_patches $version 2
      ;;
    *)
     logi "Shell: Default case"
-    /system/bin/fm_qsoc_patches $version 0
+    /vendor/bin/fm_qsoc_patches $version 0
     ;;
 esac
 
@@ -78,10 +78,10 @@ exit_code_fm_qsoc_patches=$?
 
 case $exit_code_fm_qsoc_patches in
    0)
-	logi "FM QSoC calibration and firmware download succeeded"
+    logi "FM QSoC calibration and firmware download succeeded"
    ;;
   *)
-	failed "FM QSoC firmware download and/or calibration failed" $exit_code_fm_qsoc_patches
+    failed "FM QSoC firmware download and/or calibration failed" $exit_code_fm_qsoc_patches
    ;;
 esac
 

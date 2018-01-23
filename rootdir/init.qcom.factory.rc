@@ -27,46 +27,58 @@
 #
 
 # Define fastmmi
-service fastmmi /system/bin/mmi
+service fastmmi /vendor/bin/mmi
     user root
     group root
     disabled
 
 on property:sys.boot_mode=ffbm
-    write -p /dev/block /dev/block/bootdevice/by-name/misc "ffbm-01"
+    write ${persist.vendor.mmi.misc_dev_path} "ffbm-01"
+
+on property:sys.boot_mode=qmmi
+    write ${persist.vendor.mmi.misc_dev_path} "ffbm-02"
 
 on property:sys.boot_mode=normal
-    write -p /dev/block /dev/block/bootdevice/by-name/misc "normal"
+    write ${persist.vendor.mmi.misc_dev_path} "normal"
 
 # Creating a scratch storage on /data for factory testing.
 on factory-fs
     mount tmpfs tmpfs /data
 
+on post-fs-data
+    setprop persist.sys.usb.ffbm-00.func diag
+    setprop persist.sys.usb.ffbm-01.func diag
+    setprop persist.sys.usb.ffbm-02.func diag
+
 on mmi
     # ========================================================
     #              This is FFBM only settings.
     # ========================================================
+
+    start fastmmi
+
+    # A/B update verifier that marks a successful boot.
+    exec - root cache -- /system/bin/update_verifier nonencrypted
+
     #mkdir for factory data files.
-    mkdir /cache/FTM_AP 0750 root root
     mkdir /persist/FTM_AP 0750 root root
 
     #set property for sys.usb.config
     setprop sys.usb.config diag,adb
 
     #Start the following services needed for fftm
+    start servicemanager
+    start surfaceflinger
     start qcom-usb-sh
     start logd
     start debuggerd
     start debuggerd64
-    start servicemanager
-    start surfaceflinger
     start per_mgr
     start qcom-sh
     start ril-daemon
     start config_bluetooth
     start sensors
     start media
-    start fastmmi
     start wcnss-service
     start qcom-post-boot
     start rmt_storage
@@ -76,6 +88,7 @@ on mmi
     start qcomsysd
     start ptt_ffbm
     start tftp_server
+    start cnss-daemon
 
 on ffbm
     trigger early-fs

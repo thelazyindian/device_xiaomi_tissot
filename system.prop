@@ -219,6 +219,7 @@ dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapmaxfree=8m
 ro.hardware.nfc_nci=nqx.default
 persist.radio.multisim.config=dsds
+persist.radio.aosp_usr_pref_sel=true
 keyguard.no_require_sim=true
 ro.com.android.dataroaming=true
 ro.vendor.extension_library=libqti-perfd-client.so

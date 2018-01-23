@@ -66,10 +66,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_BUILD_VARIANT := user
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 
-# Modules
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilt/modules/pronto/pronto_wlan.ko:system/lib/modules/wlan.ko
-
 # Platform
 TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
@@ -192,7 +188,7 @@ TARGET_PROVIDES_KEYMASTER := true
 
 # Modules
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilt/modules/pronto/pronto_wlan.ko:system/lib/modules/wlan.ko
+    $(DEVICE_PATH)/prebuilt/modules/pronto/pronto_wlan.ko:system/vendor/lib/modules/pronto/pronto_wlan.ko
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -247,11 +243,9 @@ HOSTAPD_VERSION := VER_0_8_X
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_MODULE_NAME := wlan
-WIFI_DRIVER_MODULE_PATH := /system/lib/modules/pronto/pronto_wlan.ko
+WIFI_DRIVER_MODULE_PATH := /system/vendor/lib/modules/pronto/pronto_wlan.ko
 WIFI_DRIVER_MODULE_ARG := con_mode=5
 TARGET_USES_QCOM_WCNSS_QMI := true
 

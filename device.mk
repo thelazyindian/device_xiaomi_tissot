@@ -152,19 +152,6 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     MiuiCamera
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/camera/camera_config.xml:system/etc/camera/camera_config.xml \
-    $(LOCAL_PATH)/configs/camera/ov12a10_arc_chromatix.xml:system/etc/camera/ov12a10_arc_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov12a10_arc_ofilm_chromatix.xml:system/etc/camera/ov12a10_arc_ofilm_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov12a10_chromatix.xml:system/etc/camera/ov12a10_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov12a10_ofilm_chromatix.xml:system/etc/camera/ov12a10_ofilm_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov5675_qtech_chromatix.xml:system/etc/camera/ov5675_qtech_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov13880_arc_chromatix.xml:system/etc/camera/ov13880_arc_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov13880_arc_ofilm_chromatix.xml:system/etc/camera/ov13880_arc_ofilm_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov13880_chromatix.xml:system/etc/camera/ov13880_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/ov13880_ofilm_chromatix.xml:system/etc/camera/ov13880_ofilm_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/s5k5e8_ofilm_chromatix.xml:system/etc/camera/s5k5e8_ofilm_chromatix.xml \
-
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/xiaomi/tissot/prebuilt/system,system)
@@ -223,7 +210,7 @@ PRODUCT_COPY_FILES += \
 
 # IRSC
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+    $(LOCAL_PATH)/configs/sec_config:system/vendor/etc/sec_config
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -243,9 +230,9 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/vendor/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/vendor/etc/media_profiles.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -329,8 +316,8 @@ PRODUCT_PACKAGES += \
     sensors.msm8953
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf \
-    $(DEVICE_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf
+    $(DEVICE_PATH)/configs/sensors/hals.conf:system/vendor/etc/sensors/hals.conf \
+    $(DEVICE_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/vendor/etc/sensors/sensor_def_qcomdev.conf
 
 # Wifi
 PRODUCT_PACKAGES += \

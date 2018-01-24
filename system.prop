@@ -207,9 +207,7 @@ persist.dpm.feature=1
 #add for cts selinux
 ro.product.first_api_level=25
 
-#
-# ADDITIONAL_BUILD_PROPERTIES
-#
+# Additional
 dalvik.vm.heapminfree=4m
 dalvik.vm.heapstartsize=16m
 dalvik.vm.dex2oat-threads=6
@@ -220,8 +218,6 @@ dalvik.vm.heapmaxfree=8m
 ro.hardware.nfc_nci=nqx.default
 persist.radio.multisim.config=dsds
 persist.radio.aosp_usr_pref_sel=true
-keyguard.no_require_sim=true
-ro.com.android.dataroaming=true
 ro.vendor.extension_library=libqti-perfd-client.so
 persist.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.sib16_support=1
@@ -266,7 +262,6 @@ persist.vendor.audio.speaker.prot.enable=false
 vendor.audio.hw.aac.encoder=true
 vendor.audio.flac.sw.decoder.24bit=true
 persist.vendor.bt.enable.splita2dp=false
-rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 ro.qualcomm.svi=1
 ro.qcom.svi.sensortype=2
 debug.svi.logs=1
@@ -277,15 +272,4 @@ config.svi.path=/system/etc/display/SVIConfig.xml
 ro.control_privapp_permissions=log
 ro.opa.eligible_device=true
 drm.service.enabled=true
-ro.com.google.clientidbase=android-xiaomi
-ro.com.google.clientidbase.ms=android-xiaomi-rev2
-ro.treble.enabled=false
-persist.sys.dalvik.vm.lib.2=libart.so
-dalvik.vm.isa.arm64.variant=generic
-dalvik.vm.isa.arm64.features=default
-dalvik.vm.isa.arm.variant=cortex-a53
-dalvik.vm.isa.arm.features=default
-net.bt.name=Android
-dalvik.vm.stack-trace-file=/data/anr/traces.txt
-
 

@@ -23,7 +23,7 @@ $(call inherit-product, device/xiaomi/tissot/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := full_tissot
-PRODUCT_DEVICE := tissot 
+PRODUCT_DEVICE := tissot
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := MI A1
+PRODUCT_MODEL := Mi A1
 PRODUCT_MANUFACTURER := Xiaomi

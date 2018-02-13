@@ -89,6 +89,7 @@ ro.sys.fw.bservice_age=5000
 
 # Fingerprint
 persist.qfp=false
+sys.fp.vendor=goodix
 
 # Fm
 ro.fm.transmitter=false

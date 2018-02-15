@@ -216,10 +216,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8953
 
-# Prebuilt
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/xiaomi/tissot/prebuilt/system,system)
-
 # QMI
 PRODUCT_PACKAGES += \
     libjson

@@ -54,6 +54,8 @@ persist.camera.imglib.cac3=2
 camera.lowpower.record.enable=1
 persist.camera.gyro.disable=0
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+persist.camera.HAL3.enabled=1
+persist.camera.eis.enable=1
 
 # Cne/Dpm
 persist.cne.feature=1
@@ -89,7 +91,6 @@ ro.sys.fw.bservice_age=5000
 
 # Fingerprint
 persist.qfp=false
-sys.fp.vendor=goodix
 
 # Fm
 ro.fm.transmitter=false

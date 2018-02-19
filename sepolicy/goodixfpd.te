@@ -42,3 +42,8 @@ allow goodixfpd self:{ netlink_socket netlink_generic_socket } create_socket_per
 set_prop(goodixfpd, system_prop)
 
 allow goodixfpd goodixfpd_service:service_manager { add find };
+
+allow goodixfpd goodixfingerprintd_exec:file { read open getattr entrypoint execute };
+allow goodixfpd self:capability dac_override;
+allow goodixfpd goodixfingerprintd_device:chr_file rw_file_perms;
+r_dir_file(goodixfpd, firmware_file)

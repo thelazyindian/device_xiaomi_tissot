@@ -1,2 +1,3 @@
 allow audioserver system_file:lnk_file getattr;
+allow audioserver persist_file:file { read open getattr };
 

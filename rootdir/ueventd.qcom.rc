@@ -277,6 +277,5 @@
 /sys/devices/soc/soc:fpc1020        compatible_all      0660   system     system
 /sys/devices/soc/soc:fpc1020        fingerdown_wait     0660   system     system
 
-
 # peel ir nodes
 /dev/peel_ir                 0660   system       system

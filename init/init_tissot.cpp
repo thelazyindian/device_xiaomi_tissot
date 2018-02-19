@@ -27,19 +27,11 @@
 
 #include <fcntl.h>
 #include <stdlib.h>
-#include <sys/sysinfo.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
-
-char const *heapstartsize;
-char const *heapgrowthlimit;
-char const *heapsize;
-char const *heapminfree;
-char const *heapmaxfree;
-char const *large_cache_height;
 
 static void init_alarm_boot_properties()
 {
@@ -72,50 +64,16 @@ static void init_alarm_boot_properties()
      }
 }
 
-void check_device()
-{
-    struct sysinfo sys;
-
-    sysinfo(&sys);
-
-    if (sys.totalram > 3072ull * 1024 * 1024) {
-        // from - phone-xxhdpi-4096-dalvik-heap.mk
-        heapstartsize = "16m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heapminfree = "4m";
-        heapmaxfree = "8m";
-	large_cache_height = "2048";
-    } else if (sys.totalram > 2048ull * 1024 * 1024) {
-        // from - phone-xxhdpi-3072-dalvik-heap.mk
-        heapstartsize = "8m";
-        heapgrowthlimit = "288m";
-        heapsize = "768m";
-        heapminfree = "512k";
-	heapmaxfree = "8m";
-        large_cache_height = "1024";
-    } else {
-        // from - phone-xxhdpi-2048-dalvik-heap.mk
-        heapstartsize = "16m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
-        heapminfree = "2m";
-        heapmaxfree = "8m";
-        large_cache_height = "1024";
-   }
-}
-
 void vendor_load_properties()
 {
     init_alarm_boot_properties();
-    check_device();
 
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
-    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_set("dalvik.vm.heapsize", heapsize);
+    property_set("dalvik.vm.heapstartsize", "16m");
+    property_set("dalvik.vm.heapgrowthlimit", "192m");
+    property_set("dalvik.vm.heapsize", "512m");
     property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", heapminfree);
-    property_set("dalvik.vm.heapmaxfree", heapmaxfree);
+    property_set("dalvik.vm.heapminfree", "4m");
+    property_set("dalvik.vm.heapmaxfree", "8m");
 
     property_set("ro.hwui.texture_cache_size", "72");
     property_set("ro.hwui.layer_cache_size", "48");
@@ -127,5 +85,5 @@ void vendor_load_properties()
     property_set("ro.hwui.text_small_cache_width", "1024");
     property_set("ro.hwui.text_small_cache_height", "1024");
     property_set("ro.hwui.text_large_cache_width", "2048");
-    property_set("ro.hwui.text_large_cache_height", large_cache_height);
+    property_set("ro.hwui.text_large_cache_height", "1024");
 }

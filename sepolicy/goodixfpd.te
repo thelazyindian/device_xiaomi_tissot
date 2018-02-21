@@ -1,0 +1,5 @@
+type goodixfpd, domain;
+type goodixfpd_exec, exec_type, file_type;
+type goodixfpd_device, dev_type;
+type goodixfpd_data_file, file_type, data_file_type;
+init_daemon_domain(goodixfpd)

@@ -208,7 +208,7 @@ on boot
     chown system system /dev/goodix_fp
     chmod 0644 /dev/goodix_fp
 
-    setprop ro.hardware goodix
+    setprop ro.hardware.fingerprint goodix
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -615,7 +615,8 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
 service goodixfpd /system/bin/goodixfingerprintd
     class late_start
     user root
-    group system  
+    group system sdcard_rw
+    writepid /dev/cpuset/system-background/tasks
 
 on property:sys.fp.goodix=0
    stop goodixfpd
@@ -630,8 +631,8 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group system sdcard_rw
-	system system
-	writepid /dev/cpuset/system-background/tasks
+    system system
+    writepid /dev/cpuset/system-background/tasks
 
 on charger
     setprop persist.sys.usb.config charging

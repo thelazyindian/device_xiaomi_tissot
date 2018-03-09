@@ -55,7 +55,7 @@ persist.camera.stats.test=5
 persist.camera.gyro.disable=0
 camera.lowpower.record.enable=1
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest,org.lineageos.snap
 vendor.camera.aux.packagelist2=com.android.systemui
 
 # Cne/Dpm

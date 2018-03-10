@@ -30,10 +30,10 @@
 target=`getprop ro.board.platform`
 
 function configure_zram_parameters() {
-    # Zram disk - 512MB size
+    # Zram disk - 1.5GB size
     zram_enable=`getprop ro.vendor.qti.config.zram`
     if [ "$zram_enable" == "true" ]; then
-        echo 536870912 > /sys/block/zram0/disksize
+        echo 1610612736 > /sys/block/zram0/disksize
         mkswap /dev/block/zram0
         swapon /dev/block/zram0 -p 32758
     fi
@@ -1179,7 +1179,7 @@ case "$target" in
                 # spill load is set to 100% by default in the kernel
                 echo 3 > /proc/sys/kernel/sched_spill_nr_run
                 # Apply inter-cluster load balancer restrictions
-                echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
+                echo 0 > /proc/sys/kernel/sched_restrict_cluster_spill
 
                 # set sync wakee policy tunable
                 echo 1 > /proc/sys/kernel/sched_prefer_sync_wakee_to_waker
@@ -1332,8 +1332,8 @@ case "$target" in
                 echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
                 # SMP scheduler
-                echo 85 > /proc/sys/kernel/sched_upmigrate
-                echo 85 > /proc/sys/kernel/sched_downmigrate
+                echo 100 > /proc/sys/kernel/sched_upmigrate
+                echo 100 > /proc/sys/kernel/sched_downmigrate
                 echo 19 > /proc/sys/kernel/sched_upmigrate_min_nice
 
                 # Enable sched guided freq control
@@ -1689,6 +1689,7 @@ case "$target" in
             echo 5 > /proc/sys/kernel/sched_spill_nr_run
             echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
             echo 100000 > /proc/sys/kernel/sched_short_burst_ns
+            echo 1 > /proc/sys/kernel/sched_prefer_sync_wakee_to_waker
 
             # cpuset settings
             echo 0-3 > /dev/cpuset/background/cpus
@@ -2887,3 +2888,4 @@ esac
 misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
 real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path
+

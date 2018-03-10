@@ -89,7 +89,7 @@ start_msm_irqbalance_8939()
 	fi
 }
 
-start_msm_irqbalance()
+start_msm_irqbalance660()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
@@ -98,6 +98,13 @@ start_msm_irqbalance()
 		    "318" | "327")
 			start vendor.msm_irqbl_sdm630;;
 		esac
+	fi
+}
+
+start_msm_irqbalance()
+{
+	if [ -f /vendor/bin/msm_irqbalance ]; then
+		start vendor.msm_irqbalance
 	fi
 }
 
@@ -205,7 +212,7 @@ case "$target" in
                   esac
                   ;;
        esac
-        start_msm_irqbalance
+        start_msm_irqbalance660
         ;;
     "apq8084")
         platformvalue=`cat /sys/devices/soc0/hw_platform`
@@ -334,22 +341,23 @@ case "$target" in
              "293" | "304" | "338" )
                   case "$hw_platform" in
                        "Surf")
-                                    setprop qemu.hw.mainkeys 0
+                                    #setprop qemu.hw.mainkeys 0
                                     ;;
                        "MTP")
-                                    setprop qemu.hw.mainkeys 0
+                                    #setprop qemu.hw.mainkeys 0
                                     ;;
                        "RCM")
-                                    setprop qemu.hw.mainkeys 0
+                                    #setprop qemu.hw.mainkeys 0
+                                    ;;
+                       "QRD")
+                                    setprop qemu.hw.mainkeys 1
+                                    #setprop qemu.hw.mainkeys 0
                                     ;;
                   esac
                   ;;
        esac
         ;;
 esac
-
-# Set shared touchpanel nodes ownership (these are proc_symlinks to the real sysfs nodes)
-chown -LR system.system /proc/touchpanel
 
 #
 # Copy qcril.db if needed for RIL
@@ -378,6 +386,10 @@ if [ ! -f /firmware/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_versio
 fi
 cp /firmware/image/modem_pr/mbn_ota.txt /data/vendor/radio/modem_config
 chown radio.radio /data/vendor/radio/modem_config/mbn_ota.txt
+cp /firmware/image/modem_pr/mbn_oin.txt /data/vendor/radio/modem_config
+chown radio.radio /data/vendor/radio/modem_config/mbn_oin.txt
+cp /firmware/image/modem_pr/mbn_ogl.txt /data/vendor/radio/modem_config
+chown radio.radio /data/vendor/radio/modem_config/mbn_ogl.txt
 echo 1 > /data/vendor/radio/copy_complete
 
 #check build variant for printk logging

@@ -1,17 +1,7 @@
-<!--
-    This is a skeleton device manifest. Notes:
-    1. android.hidl.*, android.frameworks.*, android.system.* are not 
-included.
-    2. If a HAL is supported in both hwbinder and passthrough transport,
-       only hwbinder is shown.
-    3. It is likely that HALs in passthrough transport does not have
-       <interface> declared; users will have to write them by hand.
-    4. sepolicy version is set to 0.0. It is recommended that the entry
-       is removed from the manifest file and written by assemble_vintf
-       at build time. --> <manifest version="1.0" type="device">
+<manifest version="1.0" type="device">
     <hal format="hidl">
         <name>android.hardware.audio</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.0</version>
         <interface>
             <name>IDevicesFactory</name>
@@ -20,7 +10,7 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.0</version>
         <interface>
             <name>IEffectsFactory</name>
@@ -38,12 +28,16 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
+        <interface>
+            <name>IBluetoothHci</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.broadcastradio</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IBroadcastRadioFactory</name>
@@ -52,7 +46,7 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
@@ -70,12 +64,22 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.drm</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>default</instance>
+            <instance>widevine</instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
+            <instance>default</instance>
+            <instance>widevine</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IGatekeeper</name>
@@ -89,7 +93,6 @@ included.
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
-            <instance>gnss_vendor</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -103,7 +106,7 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.composer</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.1</version>
         <interface>
             <name>IComposer</name>
@@ -120,17 +123,17 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.ir</name>
-        <transport arch="32+64">passthrough</transport>
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IConsumerIr</name>
+            <name>IHealth</name>
             <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>3.0</version>
         <interface>
             <name>IKeymasterDevice</name>
@@ -139,7 +142,7 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.light</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.0</version>
         <interface>
             <name>ILight</name>
@@ -147,8 +150,21 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.media.omx</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOmx</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IOmxStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.memtrack</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IMemtrack</name>
@@ -157,8 +173,8 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
-        <transport arch="32+64">passthrough</transport>
-        <version>1.1</version>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
         <interface>
             <name>IPower</name>
             <instance>default</instance>
@@ -167,7 +183,7 @@ included.
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
@@ -193,10 +209,14 @@ included.
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
         <version>1.0</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>ISensors</name>
@@ -205,7 +225,7 @@ included.
     </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.0</version>
         <interface>
             <name>ISoundTriggerHw</name>
@@ -213,11 +233,38 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.thermal</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IThermal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.usb</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.vibrator</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IVibrator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.wifi</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IWifi</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -231,12 +278,30 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.wifi</name>
+        <name>com.qualcomm.qti.ant</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
-            <name>IWifi</name>
+            <name>IAntHci</name>
             <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>com.qualcomm.qti.bluetooth_audio</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IBluetoothAudio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>com.qualcomm.qti.dpm.api</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IdpmQmi</name>
+            <instance>dpmQmiService</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -246,15 +311,6 @@ included.
         <interface>
             <name>IImsCmService</name>
             <instance>qti.ims.connectionmanagerservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.uceservice</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IUceService</name>
-            <instance>com.qualcomm.qti.uceservice</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -269,10 +325,28 @@ included.
     <hal format="hidl">
         <name>com.quicinc.cne.server</name>
         <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IServer</name>
+            <instance>cnd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>com.quicinc.cne.server</name>
+        <transport>hwbinder</transport>
         <version>2.0</version>
         <interface>
             <name>IServer</name>
             <instance>cnd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.display.color</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayColor</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -281,6 +355,33 @@ included.
         <version>1.0</version>
         <interface>
             <name>IDisplayConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.display.postproc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayPostproc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.goodix.hardware.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGoodixBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.esepowermanager</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IEsePowerManager</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -294,12 +395,30 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.iop</name>
+        <name>vendor.qti.hardware.improvetouch.blobmanager</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IIop</name>
-            <instance>default</instance>
+            <name>IBlobManager</name>
+            <instance>BlobManagerService</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.improvetouch.gesturemanager</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGestureManager</name>
+            <instance>GestureManagerService</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.improvetouch.touchcompanion</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchCompanion</name>
+            <instance>TouchCompanionService</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -312,6 +431,28 @@ included.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.qdutils_disp</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IQdutilsDisp</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qteeconnector</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAppConnector</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGPAppConnector</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.radio.am</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -319,6 +460,25 @@ included.
             <name>IQcRilAudio</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAtCmdFwd</name>
+            <instance>AtCmdFwdService</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.config</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IConfig</name>
+            <instance>radioconfig0</instance>
+            <instance>radioconfig1</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -338,6 +498,7 @@ included.
         <interface>
             <name>IUimLpa</name>
             <instance>UimLpa0</instance>
+            <instance>UimLpa1</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -397,51 +558,6 @@ included.
         <interface>
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.display.color</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDisplayColor</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.display.postproc</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDisplayPostproc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.qdutils_disp</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IQdutilsDisp</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl"> 
-        <name>android.hardware.usb</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IUsb</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.cas</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IMediaCasService</name>
-            <instance>default</instance>
         </interface>
     </hal>
 </manifest>

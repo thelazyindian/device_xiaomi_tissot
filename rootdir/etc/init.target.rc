@@ -80,6 +80,8 @@ on init
    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
    chmod 0664 sys/class/power_supply/battery/constant_charge_current_max
    chmod 0664 sys/kernel/debug/camera/logsync
+   # Goodix fingerprint
+   chown system system /dev/goodix_fp
 
 service qseecomd /vendor/bin/qseecomd
    class core

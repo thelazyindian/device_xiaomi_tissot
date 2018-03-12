@@ -201,6 +201,9 @@ TARGET_NO_RECOVERY := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 

@@ -92,6 +92,10 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
+# Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8953
 TARGET_NO_BOOTLOADER := true
@@ -112,10 +116,6 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 WITH_LINEAGE_CHARGER := false
 
-# CMHW
-BOARD_HARDWARE_CLASS += \
-    hardware/lineage/lineagehw
-
 # CNE / DPM
 BOARD_USES_QCNE := true
 
@@ -124,6 +124,7 @@ ENABLE_CPUSETS := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
 
 # Dexpreopt
 ifeq ($(CARDINAL_RELEASE),true)
@@ -144,6 +145,7 @@ TARGET_USES_NEW_ION_API :=true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_OVERLAY := true
+TARGET_USES_COLOR_METADATA := true
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -174,9 +176,7 @@ DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
 HWUI_COMPILE_FOR_PERF := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_tissot
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_tissot
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
@@ -202,7 +202,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
@@ -220,13 +220,16 @@ TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := dsp firmware persist
 
 # SHIMS
 TARGET_LD_SHIM_LIBS := /system/lib/libMiCameraHal.so|libshim_MiCamera.so
+
+# Enable sensor multi HAL
+USE_SENSOR_MULTI_HAL := true
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true

@@ -54,6 +54,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.cas</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMediaCasService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.configstore</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -132,6 +141,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.ir</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IConsumerIr</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
         <version>3.0</version>
@@ -183,7 +201,7 @@
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
@@ -262,7 +280,7 @@
     <hal format="hidl">
         <name>android.hardware.wifi</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
@@ -274,24 +292,6 @@
         <version>1.0</version>
         <interface>
             <name>ISupplicant</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.ant</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IAntHci</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.bluetooth_audio</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IBluetoothAudio</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -377,15 +377,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.esepowermanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IEsePowerManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -395,30 +386,12 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.blobmanager</name>
+        <name>vendor.qti.hardware.iop</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IBlobManager</name>
-            <instance>BlobManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.gesturemanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IGestureManager</name>
-            <instance>GestureManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.touchcompanion</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ITouchCompanion</name>
-            <instance>TouchCompanionService</instance>
+            <name>IIop</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -440,19 +413,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.qteeconnector</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IAppConnector</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IGPAppConnector</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.radio.am</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -460,25 +420,6 @@
             <name>IQcRilAudio</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.radio.atcmdfwd</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IAtCmdFwd</name>
-            <instance>AtCmdFwdService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.radio.config</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IConfig</name>
-            <instance>radioconfig0</instance>
-            <instance>radioconfig1</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -552,6 +493,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.tui_comm</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ITuiComm</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.imsrtpservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -560,4 +510,7 @@
             <instance>imsrtpservice</instance>
         </interface>
     </hal>
+    <sepolicy>
+        <version>27.0</version>
+    </sepolicy>
 </manifest>

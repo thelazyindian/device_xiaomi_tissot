@@ -156,9 +156,14 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
 
-# FM
+# dm-verity definitions
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
+
+# dm-verity defs
+PRODUCT_SUPPORTS_VERITY := true
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+#$(call inherit-product, build/target/product/verity.mk)
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := true

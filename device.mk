@@ -19,6 +19,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Vendors
 $(call inherit-product, vendor/xiaomi/tissot/tissot-vendor.mk)
 
+$(call inherit-product, build/target/product/verity.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 

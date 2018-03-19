@@ -230,7 +230,7 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 BOARD_ROOT_EXTRA_FOLDERS := dsp firmware persist
 
 # SHIMS
-TARGET_LD_SHIM_LIBS := /system/lib/libMiCameraHal.so|libshim_MiCamera.so
+TARGET_LD_SHIM_LIBS := /system/vendor/lib/hw/camera.msm8953.so|libshim_MiCamera.so
 
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true

@@ -244,3 +244,11 @@ on boot
     write /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/fw_name PR1702898-s3528t_00260005_00380008.img
     write /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/update_fw 1
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
+
+on property:sys.fp.vendor=goodix
+   setprop ro.boot.fpsensor goodix
+   setprop persist.sys.fp.vendor goodix
+
+on property:sys.fp.vendor=FPC
+   setprop ro.boot.fpsensor fpc
+
